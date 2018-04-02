@@ -1,0 +1,15 @@
+version: '2'
+services:
+    jhipstersampleapplication5-app:
+        image: jhipstersampleapplication5
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATA_MONGODB_URI=mongodb://jhipstersampleapplication5-mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=jhipsterSampleApplication5
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    jhipstersampleapplication5-mongodb:
+        extends:
+            file: mongodb.yml
+            service: jhipstersampleapplication5-mongodb
